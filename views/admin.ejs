@@ -1,0 +1,27 @@
+<h1>Admin</h1>
+
+<a class="" href="/add_post">Ajouter un article</a>
+
+<table class=''>
+	<thead>
+			<th>Titre</th>
+            <th>Article</th>
+            <th></th>
+	</thead>
+	<tbody>
+		<% for(let i = 0; i < posts.length; i++) { %>
+			<tr data-id="<%=posts[i].id%>">
+				<td>
+					<a class="" href="/article/<%=posts[i].id%>"><%=posts[i].title%></a>
+				</td>
+				<td><%=posts[i].description.substring(0, 30)%> ...</td>
+				
+				<td><%=posts[i].Category_Name%></td>
+				<td>
+                    <a class="edit" href="edit_post/<%=posts[i].id%>"><i class="fa fa-pencil"></i></a>
+                    <button class="remove js-remove-post-button" data-id="<%=posts[i].id%>"><i class="fa fa-remove"></i></button>
+                </td>
+			</tr>
+		<% } %>
+	</tbody>
+</table>

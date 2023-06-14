@@ -1,0 +1,130 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+html {
+	font-size: 62.5%;
+}
+
+
+.sidenav {
+  height: 100%;
+  width: 250px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: -250px;
+  background-color: #2583BA;
+  padding-top: 60px;
+  transition: left 0.5s ease;
+}
+
+/* Sidenav menu links */
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: white;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidenav a:hover {
+  color: white;
+  font-size : 20px;
+}
+
+.sidenav ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Active class */
+.sidenav.active {
+  left: 0;
+}
+
+/* Close btn */
+.sidenav .close {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+}
+
+/* Icône burger */
+.burger-icon span {
+  display: block;
+  width: 70px;
+  height: 10px;
+  background-color: #2583BA;
+  margin: 6px 0;
+}
+
+.titre {
+  background-color : #2583BA;
+  color : white;
+  font-family : Serif;
+  font-size : 50px;
+  text-align : center;
+  padding-top : 5em;
+  padding-bottom : 5em;
+  margin-left : 10em;
+  margin-right : 10em;
+  padding-right : 3em;
+}
+
+.imgFond {
+  background-image : url(../img/imgFond.JPG);
+  background-size : cover;
+  background-repeat : no-repeat;
+  background-position: 100% 85%;
+
+}
+
+.header {
+   background-color : #2583BA;
+   width : 20%;
+   background : center;
+}
+
+.search {
+  color : #2583BA ;
+  text-align : right;
+  width : 30rem;
+}
+
+.header {
+  display : flex;
+  justify-content : space-between
+}
+
+.fa-magnifying-glass {
+  width : 10rem;
+  color :#2583BA ;
+}
+
+.search {
+  display : flex;
+  text-align : right;
+}
+
+.site {
+  font-size : 0.5em;
+}
+
+/********** FOOTER *************/
+
+.footer {
+	background-color: #2583BA;
+	text-align: center;
+	padding: 25px;
+}
+
+.pFoot, .logo {
+  text-align : left;
+  font-size : 3em;
+}
