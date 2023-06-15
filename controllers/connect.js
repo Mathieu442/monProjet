@@ -15,7 +15,7 @@ export const RegisterSubmit = function (req, res) {
             const newAdmin = {
                 id: uuidv4(),
                 pseudo: req.body.pseudo,
-                password: hash
+                motDePasse: req.body.motDePasse
             };
 
             pool.query('INSERT INTO users SET ?', [newAdmin], function (error, result) {

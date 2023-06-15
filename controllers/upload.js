@@ -1,6 +1,7 @@
 import fs from 'fs'
 import formidable from "formidable"
 
+
 export const Upload = (req, res) => {
     res.render('layout', {template: 'upload'})
 }

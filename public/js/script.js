@@ -17,3 +17,17 @@ function closeNav() {
 
 //------------------------------------------------------------------------------
 
+
+ document.addEventListener('DOMContentLoaded', function() {
+      // Sélectionne l'élément de lien d'inscription
+      var inscriptionLink = document.getElementById('register');
+      
+      // Ajoute un gestionnaire d'événement au clic sur le lien d'inscription
+      inscriptionLink.addEventListener('click', function(event) {
+        // Empêche le comportement par défaut du lien (par exemple, la navigation)
+        event.preventDefault();
+
+        // Effectue la navigation vers la page d'inscription
+        window.location.href = '/register'; // Remplace '/inscription' par l'URL réelle de ta page d'inscription
+      });
+    });

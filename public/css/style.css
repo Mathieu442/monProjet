@@ -8,6 +8,10 @@ html {
 	font-size: 62.5%;
 }
 
+body {
+  max-height: 100vh;
+  overflow-y: auto;
+}
 
 .sidenav {
   height: 100%;

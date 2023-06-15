@@ -2,11 +2,11 @@ import pool from '../config/database.js';
 import bcrypt from 'bcrypt';
 
 export const Login = function (req, res) {
-    res.render('layout', { template: 'login_form' });
+    res.render('layout', { template: 'login' });
 }
 
 export const LoginSubmit = function (req, res) {
-    const { email, password } = req.body;
+    const { email, motDePasse } = req.body;
     
     pool.query('SELECT * from users WHERE email = ?', [email], function (error, result) {
         if (error) {
@@ -16,7 +16,7 @@ export const LoginSubmit = function (req, res) {
             if (result.length < 1) {
                 res.redirect('/login');
             } else {
-                bcrypt.compare(password, result[0].password, function(error, isAllowed) {
+                bcrypt.compare(motDePasse, result[0].password, function(error, isAllowed) {
                     if (isAllowed) {
                         req.session.role = result[0].role;
                         res.redirect('/admin');
