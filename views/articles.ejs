@@ -1,9 +1,1 @@
-<ul class="">
-	<% for(let i = 0; i < posts.length; i++) { %>
-			<li>
-				<a href="/article/<%=posts[i].id%>"><%=posts[i].titre.toUpperCase()%></a>
-				<p><%=posts[i].contenu.substring(0, 30)%> ...</p>
-				<p><%=posts[i].dateCreation.toLocaleDateString()%></p>
-			</li>
-	<% } %>
-</ul>
+<a href="/add_post">Ajoutez un article</a>

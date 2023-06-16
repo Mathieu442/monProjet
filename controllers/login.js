@@ -8,17 +8,17 @@ export const Login = function (req, res) {
 export const LoginSubmit = function (req, res) {
     const { email, motDePasse } = req.body;
     
-    pool.query('SELECT * from users WHERE email = ?', [email], function (error, result) {
+    pool.query('SELECT * from Administrateur WHERE email = ?', [email], function (error, result) {
         if (error) {
             console.error(error);
             res.status(500).send('Erreur de base de données');
         } else {
-            if (result.length < 1) {
+            if (result.length < 0) {
                 res.redirect('/login');
             } else {
-                bcrypt.compare(motDePasse, result[0].password, function(error, isAllowed) {
+                bcrypt.compare(motDePasse, result[0].motDePasse, function(error, isAllowed) {
                     if (isAllowed) {
-                        req.session.role = result[0].role;
+                        req.session.isAdmin = true
                         res.redirect('/admin');
                     } else {
                         res.redirect('/login');

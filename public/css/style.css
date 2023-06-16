@@ -1,7 +1,7 @@
-* {
+*, ::before, ::after {
+  box-sizing: border-box;
 	margin: 0;
 	padding: 0;
-	box-sizing: border-box;
 }
 
 html {
@@ -11,6 +11,7 @@ html {
 body {
   max-height: 100vh;
   overflow-y: auto;
+  height : 100vh;
 }
 
 .sidenav {
@@ -79,6 +80,36 @@ body {
   margin-left : 10em;
   margin-right : 10em;
   padding-right : 3em;
+}
+
+h1 {
+  text-align : center;
+  font-size : 4rem;
+  font-family : Arial, Helvetica, sans-serif;
+  margin-top: 5em;
+}
+
+.gallery {
+  display : flex;
+  justify-content : center;
+  width : 80%;
+  flex-wrap : wrap;
+  max-width : 1300px;
+  margin: 70px auto 0;
+  background : #2583BA;
+}
+
+.item {
+  width : 300px;
+  height : 200px;
+  margin : 10px;
+  overflow : hidden;
+  flex-shrink : 0;
+}
+
+.item img {
+  width : 100%;
+  height : auto;
 }
 
 .imgFond {

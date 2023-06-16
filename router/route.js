@@ -7,7 +7,7 @@ import { Details, AddComment } from "../controllers/requete.js";
 import { AddPost, AddPostSubmit, Admin, DeletePost, EditPost, EditPostSubmit } from "../controllers/admin.js";
 import { Login, LoginSubmit, Logout } from '../controllers/login.js';
 import { Register, RegisterSubmit } from '../controllers/register.js';
-import { UploadPost, Upload } from '../controllers/upload.js';
+import { Gallery } from '../controllers/gallery.js';
 
 
 router.get('/', homeController);
@@ -37,7 +37,7 @@ router.get('/register', Register);
 router.post('/register', RegisterSubmit);
 
 //DETAIL PAGE
-router.get('/article/:id', Details);
+router.get('/articles', Details);
 
 //ADD COMMENTS
 router.post('/add_comment/:id', AddComment);
@@ -51,10 +51,7 @@ router.get('/edit_post/:id', EditPost);
 //EDIT POST SUBMIT
 router.put('/posts/:id', EditPostSubmit);
 
-router.get('/upload', Upload)
-
-router.post('/upload', UploadPost)
-
+router.get('/gallery', Gallery)
 
 
 export default router;

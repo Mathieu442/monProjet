@@ -1,3 +1,5 @@
+//Gestion de la Nav Barre
+
 var sidenav = document.getElementById("mySidenav");
 var openBtn = document.getElementById("openBtn");
 var closeBtn = document.getElementById("closeBtn");

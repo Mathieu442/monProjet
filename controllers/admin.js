@@ -16,7 +16,7 @@ export const Admin =  (req, res) => {
 export const AddPost = (req, res) => {
     
         // récupération des catégories depuis la bdd
-        pool.query('SELECT * FROM category', function (error, categories, fields) {
+        pool.query('SELECT * FROM Categorie', function (error, categories, fields) {
 
 	        // appel du template layout avec add_post où on fait passer les infos auteurs et catégories
 	        res.render('layout', { template: 'add_post',categories: categories });
@@ -32,7 +32,7 @@ export const AddPostSubmit = (req, res) => {
 	const SIZE_MAX = 5 * 1024 * 1024
     
     // option 1
-    const authorizedExtention = ["jpg","jpeg","png"]
+    const authorizedExtention = ["jpg","jpeg","png","JPG","JPEG","PNG"]
     
     //option 2
     const authorizedExtention2 = ["image/jpeg","image/png","image/jpg",]
@@ -55,11 +55,13 @@ export const AddPostSubmit = (req, res) => {
         
         // le chemin d'acces du fichier dans le tmp
         const path = files.myfile.filepath
+        console.log(path)
         //recupere l'extension du fichier
         const extension = files.myfile.originalFilename.split(".").pop()
+        console.log(extension)
         // le dosssier finale
         const newPath = "public/upload/"+files.myfile.newFilename+"."+extension
-        
+        console.log(newPath)
         // option 1
         if(!authorizedExtention.includes(extension)){
             return res.status(500).send("Le fichier n'a pas la bonne extention")
@@ -75,7 +77,7 @@ export const AddPostSubmit = (req, res) => {
                 console.log(err)
             }
         })
-        pool.query('INSERT INTO articles (id, title, description, category_id, date) VALUES (?, ?, ?, ?, NOW())', [uuidv4(), fields.title, fields.content, fields.category ], function (error, result, fields) {
+        pool.query('INSERT INTO Articles (id, titre, contenu, dateCreation) VALUES (?, ?, ?, NOW())', [uuidv4(), fields.title, newPath ], function (error, result, fields) {
 	        console.log(error)
 		        // une fois le post créé en BDD on redirige vers la page / (home)
 		        res.redirect('/');

@@ -54,23 +54,27 @@
 import pool from '../config/database.js';
 import { v4 as uuidv4 } from 'uuid';
 import bcrypt from 'bcrypt';
+import express from 'express';
 
 export const Register = function (req, res) {
     res.render('layout', { template: 'register' });
 }
 
 export const RegisterSubmit = function (req, res) {
-    bcrypt.hash(req.body.password, 10, function (error, hash) {
+    bcrypt.hash(req.body.motDePasse, 10, function (error, hash) {
         if (error) {
             console.log(error);
         } else {
             const newAdmin = {
+                nom : req.body.nom,
+                prenom : req.body.prenom,
+                pseudo : req.body.pseudo,
                 id: uuidv4(),
                 email: req.body.email,
-                password: hash
+                motDePasse: hash
             };
 
-            pool.query('INSERT INTO users SET ?', [newAdmin], function (error, result) {
+            pool.query('INSERT INTO Utilisateur SET ?', [newAdmin], function (error, result) {
                 if (error) {
                     console.error(error);
                     res.status(500).send('Erreur de base de données');
