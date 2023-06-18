@@ -2,6 +2,7 @@ import express from "express";
 import session from 'express-session';
 import router from "./router/route.js";
 import parseurl from "parseurl";
+import Joi from '@hapi/joi'
 
 const app = express();
 
@@ -50,6 +51,32 @@ app.post('/login', (req, res) => {
   res.json({ login: true });
 });
  
+const schema = Joi.object({
+    
+    
+pseudo : Joi.string()
+    .min(3)
+    .max(10),
+
+
+//Minimum huit caractères, au moins une lettre majuscule, une lettre minuscule et un chiffre :
+
+motDePasse: Joi.string()
+.pattern(new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$"
+)),
+
+repeat_motDePasse: Joi.ref('motDePasse'),
+
+email: Joi.string()
+.email({ minDomainSegments : 2, tlds: { allow : ['com', 'net', 'fr']} })
+})
+
+.with('motDePasse', 'repeat_motDePasse');
+
+schema.validate({});
+
+
+
 
 
 app.get('/confirmation', (req, res) => {
