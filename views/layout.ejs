@@ -14,7 +14,7 @@
 <body>
     <!-- En-tête commune de l'application -->
     <header class="header">
-        <div>
+        <div class="search">
             <nav>
                 <div id="mySidenav" class="sidenav">
   <a id="closeBtn" href="#" class="close">×</a>
@@ -34,17 +34,19 @@
     <span></span>
   </span>
 </a>
+
+<div class ="header">
+    <input type="search" id="maRecherche" name="searchbar" placeholder="Rechercher sur le site…">
+    <button class = "maRecherche"><i class="fa-solid fa-magnifying-glass"></i></button>
+  </div>
+  
             </nav>
         </div>
         
           <%- include(template) -%> 
         
         	<form>
-  <div class ="search">
-    <input type="search" id="maRecherche" name="q"
-     placeholder="Rechercher sur le site…">
-    <button class = "maRecherche"><i class="fa-solid fa-magnifying-glass"></i></button>
-  </div>
+  
 </form>
     </header>
 
@@ -55,8 +57,7 @@
 
     <!-- Pied de page commun de l'application -->
     <footer class="footer">
-        <img src="img/logo.jpg" alt="logo boussole" class= "logo">
-       <p class = "pFoot">by floridadventure.fr</p>
+         <p class = "pFoot"><img src="img/logo.jpg" alt="logo boussole" class= "logo">by floridadventure.fr</p>
     </footer>
     <script language="javascript" src="/js/script.js"></script>
 </body>

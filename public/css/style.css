@@ -16,11 +16,11 @@ body {
 
 .sidenav {
   height: 100%;
-  width: 250px;
+  width: 300px;
   position: fixed;
   z-index: 1;
   top: 0;
-  left: -250px;
+  left: -400px;
   background-color: #2583BA;
   padding-top: 60px;
   transition: left 0.5s ease;
@@ -128,13 +128,11 @@ h1 {
 
 .search {
   color : #2583BA ;
-  text-align : right;
   width : 30rem;
 }
 
 .header {
   display : flex;
-  justify-content : space-between
 }
 
 .fa-magnifying-glass {
@@ -143,8 +141,7 @@ h1 {
 }
 
 .search {
-  display : flex;
-  text-align : right;
+  justify-content : space-between;
 }
 
 .site {
@@ -156,10 +153,18 @@ h1 {
 .footer {
 	background-color: #2583BA;
 	text-align: center;
-	padding: 25px;
+	padding: 10px;
 }
 
-.pFoot, .logo {
+.pFoot {
   text-align : left;
-  font-size : 3em;
+  font-size : 2.5em;
+  margin-bottom : 2em;
+  margin-left : 1em;
+}
+
+.logo {
+  width: 1em;
+  text-align: left;
+  margin-left : 2em;
 }
