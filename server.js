@@ -1,10 +1,15 @@
+//Importation des différents package
+
 import express from "express";
 import session from 'express-session';
 import router from "./router/route.js";
 import parseurl from "parseurl";
+import mysql from "mysql";
 
+//Initialisation d'express
 const app = express();
-const port = 8000;
+//Ecoute du
+const port = 3000;
 const hostname = "localhost";
 
 const BASE_URL = `http://${hostname}:${port}`;

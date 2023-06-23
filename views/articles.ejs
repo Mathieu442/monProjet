@@ -1,1 +1,11 @@
 <a href="/add_post">Ajoutez un article</a>
+
+<section>
+    <% for (let i = 0; i < post.length; i++){ %>
+        <article class= "article"><h2> <%= post[i].titre%></h2>
+       <img class = "article_img" src="<%= post[i].contenu%>" >
+       <p><%= post[i].dateCreation.toLocaleDateString()%></p>
+        
+        </article>
+    <% } %>
+</section>

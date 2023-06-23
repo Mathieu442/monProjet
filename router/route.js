@@ -3,7 +3,7 @@ import express from 'express';
 const router = express.Router()
 
 import homeController from "../controllers/home.js";
-import { Details, AddComment } from "../controllers/requete.js";
+import { ListArticles, AddComment } from "../controllers/requete.js";
 import { AddPost, AddPostSubmit, Admin, DeletePost, EditPost, EditPostSubmit } from "../controllers/admin.js";
 import { Login, LoginSubmit, Logout } from '../controllers/login.js';
 import { Register, RegisterSubmit } from '../controllers/register.js';
@@ -37,7 +37,7 @@ router.get('/register', Register);
 router.post('/register', RegisterSubmit);
 
 //DETAIL PAGE
-router.get('/articles', Details);
+router.get('/articles', ListArticles);
 
 //ADD COMMENTS
 router.post('/add_comment/:id', AddComment);

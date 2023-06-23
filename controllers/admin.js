@@ -1,11 +1,10 @@
-import pool from "../config/database.js";
-import fs from "fs"
-import formidable from "formidable"
-import { v4 as uuidv4 } from 'uuid';
+import  pool  from "../config/database.js";
+import  fs  from "fs";
+import  formidable  from "formidable";
+import  { v4 as uuidv4 } from 'uuid';
 
 export const Admin =  (req, res) => {
-    let sql = 'SELECT articles.id, title, description, articles.date, category.name AS Category_Name FROM articles INNER JOIN category ON articles.category_id = category.Id ORDER BY articles.date DESC';
-
+    let sql = 'SELECT Articles.id, titre, contenu, dateCreation FROM Articles INNER JOIN category ON Articles.category_id = category.Id ORDER BY Articles.date DESC';
 	pool.query(sql, function (error, posts, fields) {
         
 	        res.render('layout', {template: 'admin', posts: posts});
@@ -39,6 +38,8 @@ export const AddPostSubmit = (req, res) => {
     
     const form = new formidable.IncomingForm(); 
     
+    //Défini le chemin de destination pour le fichier téléchargé
+    form.on('fileBegin', (name, file) => { file.path = __dirname + '/public/upload/' + file.name; });
    
     form.parse(req, (err, fields, files) => {
         console.log(fields)
@@ -94,7 +95,7 @@ export const DeletePost = (req, res) => {
     let id = req.params.id;
 
 	// requete de suppresion en BDD
-	let sql = 'DELETE FROM articles WHERE id = ?';
+	let sql = 'DELETE FROM Articles WHERE id = ?';
 
 	pool.query(sql, [id], function (error, result, fields) {
 	    if (error) {
@@ -113,7 +114,7 @@ export const EditPost = (req, res) => {
 	let id = req.params.id;
 
 	// on récupère déjà l'ancien article 
-	let sql = 'SELECT * FROM articles WHERE id = ?';
+	let sql = 'SELECT * FROM Articles WHERE id = ?';
 
 	pool.query(sql, [id], function (error, post, fields) {
 
@@ -127,7 +128,7 @@ export const EditPostSubmit = (req, res) => {
 	let id = req.params.id;
 
 	// requete de modification d'un post
-	let sql = 'UPDATE articles SET title = ?, description = ? WHERE id = ?';
+	let sql = 'UPDATE Articles SET titre = ?, description = ? WHERE id = ?';
 
 	pool.query(sql, [req.body.title, req.body.content, id], function (error, result, fields) {
 	    if (error) {

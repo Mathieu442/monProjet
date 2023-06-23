@@ -2,33 +2,30 @@ import pool from "../config/database.js";
 import { v4 as uuidv4 } from 'uuid';
 
 
-export const Details =  (req, res) => {
+export const  ListArticles =  (req, res) => {
    // il y a plusieurs article on récupère un paramètre id dans l'url pour pouvoir executer la bonne requête sql en fonction du bon article
-	        res.render('layout', {template: 'articles'});
 
-	// let sql = 'SELECT articles.id, titre, contenu, dateCreation, idUtilisateur FROM articles INNER JOIN category ON articles.category_id = category.id WHERE  articles.id = ?';
-	// let sql2 = 'SELECT * FROM comments WHERE article_id = ?';
+	let sql = 'SELECT *  FROM Articles ';
 	// // !!!! attention on ne met jamais de variable dans la requête sql, risque d'injection sql
-	// // on fait passer les variable dans un tableau la methode query du module mysql 
-	// // va analyser les data à l'interieur de la varaible pour s'assurer qu'il n'y a pas de requete malveillante
-	// pool.query(sql, [id], function (error, post, fields) {
- //        console.log(error);
-	//      console.log(post)
-	//      console.log(post)
-	//     pool.query(sql2, [id], function (error, comments, fields) {
-        
-	//         console.log(comments)
-	//         res.render('layout', {template: 'article', post: post, comments: comments});
-	 	// });
-	 //});
+	// on fait passer les variable dans un tableau la methode query du module mysql 
+	// va analyser les data à l'interieur de la varaible pour s'assurer qu'il n'y a pas de requete malveillante
+	pool.query(sql, function (error, post, fields) {
+         console.log(error);
+	     console.log(post)
+	     console.log(post)
+
+	        
+	        res.render('layout', {template: 'articles', post: post});
+	 	});
+	 
 }
 
 export const AddComment =  (req, res) => {
     let id = req.params.id;
-	let sql = 'INSERT INTO comments (id, pseudo, comment, date, article_id) VALUES (?, ?, ?, NOW(), ?)';
+	let sql = 'INSERT INTO Commentaires (idCommentaire, contenu, datePublication, idUtilisateur, idArticle) VALUES (?, ?, ?, NOW(), ?)';
 	pool.query(sql, [uuidv4(), req.body.pseudo, req.body.content, id], function (error, result, fields) {
         console.log(error);
 	        console.log(result)
-	        res.redirect('/article/'+id);
+	        res.redirect('/articles/'+id);
 	 });
 }

@@ -168,3 +168,11 @@ h1 {
   text-align: left;
   margin-left : 2em;
 }
+
+.article_img {
+  width : 40rem;
+}
+
+.article {
+  display : block;
+}
