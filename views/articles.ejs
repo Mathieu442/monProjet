@@ -3,8 +3,8 @@
 
 <section>
     <% for (let i = 0; i < post.length; i++){ %>
-        <article class= "article"><h2> <%= post[i].titre%></h2>
-       <img class = "article_img" src="<%= post[i].contenu%>" alt = "Image de l'article">
+        <article class= "article"><h2> <%= post[i].titre %></h2>
+       <img class = "article_img" src="<%= post[i].contenu %>" alt = "Image de l'article">
        <p> <%= post[i].contenu%></p>
        <p><%= post[i].dateCreation.toLocaleDateString()%></p>
         

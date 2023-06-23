@@ -1,7 +1,7 @@
 
 
 <section class="comment-article">
-	<hr/>
+	
 	<ul>
 		<%for(let i = 0; i < comments.length; i++) {%>
 			<li>
@@ -11,7 +11,7 @@
 			</li>
 		<%}%>
 	</ul>
-	<hr/>
+
 </section>
 <form action="/add_comment/<%=post.id%>" method="post">
 	<label>Pseudo</label>
