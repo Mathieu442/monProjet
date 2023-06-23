@@ -24,7 +24,7 @@ export const RegisterSubmit = function (req, res) {
                     res.status(500).send('Erreur de base de données');
                 } else {
                     req.session.role = 'admin';
-                    res.redirect('/admin');
+                    res.redirect('/add_comment');
                 }
             });
         }

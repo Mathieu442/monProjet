@@ -65,7 +65,7 @@ export const RegisterSubmit = function (req, res) {
         if (error) {
             console.log(error);
         } else {
-            const newAdmin = {
+            const newUser = {
                 nom : req.body.nom,
                 prenom : req.body.prenom,
                 pseudo : req.body.pseudo,
@@ -74,13 +74,13 @@ export const RegisterSubmit = function (req, res) {
                 motDePasse: hash
             };
 
-            pool.query('INSERT INTO Utilisateur SET ?', [newAdmin], function (error, result) {
+            pool.query('INSERT INTO Utilisateur SET ?', [newUser], function (error, result) {
                 if (error) {
                     console.error(error);
                     res.status(500).send('Erreur de base de données');
                 } else {
-                    req.session.role = 'admin';
-                    res.redirect('/admin');
+                    req.session.role = 'user';
+                    res.redirect('/add_comment');
                 }
             });
         }

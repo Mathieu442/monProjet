@@ -8,7 +8,6 @@ import mysql from "mysql";
 
 //Initialisation d'express
 const app = express();
-//Ecoute du
 const port = 3000;
 const hostname = "localhost";
 
