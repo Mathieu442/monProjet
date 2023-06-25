@@ -20,28 +20,6 @@ export const  ListArticles =  (req, res) => {
 	 
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-  const articleButtons = document.querySelectorAll('.article');
 
-  articleButtons.forEach(button => {
-    button.addEventListener('click', () => {
-      const articleId = button.getAttribute('contenu-article-id');
-      // Effectuez une action supplémentaire en fonction de l'ID de l'article
-      // par exemple, effectuer une requête AJAX vers le serveur pour obtenir plus de détails sur l'article
-      console.log('Article ID:', articleId);
-    });
-  });
-});
 
-//utilison de querySelectorAll pour sélectionner tous les boutons d'article. 
-//Ajout d'un gestionnaire d'événements click à chaque bouton. Lorsque le bouton est cliqué, nous récupérons l'ID de l'article à partir de l'attribut data-article-id et nous pouvons effectuer une action supplémentaire en fonction de cet ID (par exemple, effectuer une requête AJAX vers le serveur pour obtenir plus de détails sur l'article).
 
-export const AddComment =  (req, res) => {
-    let id = req.params.id;
-	let sql = 'INSERT INTO Commentaires (idCommentaire, contenu, datePublication, idUtilisateur, idArticle) VALUES (?, ?, ?, NOW(), ?)';
-	pool.query(sql, [uuidv4(), req.body.pseudo, req.body.content, id], function (error, result, fields) {
-        console.log(error);
-	        console.log(result)
-	        res.redirect('/articles/'+id);
-	 });
-}

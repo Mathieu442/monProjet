@@ -1,0 +1,37 @@
+
+
+<section>
+  
+        <article class= "article"><h2> <%= article.titre %></h2>  
+       <p><%= article.titre %></p>
+    <a href = "/article/<%= article.id %>">
+         <img class = "article_img" src="/<%= img_url %>" alt = "Image de l'article"/>
+          </a>
+        <p><%-contenu%></p>
+   
+
+        </article>
+</section>
+
+<section class="comment-article">
+	
+	<ul>
+		<%for(let i = 0; i < comments.length; i++) {%>
+			<li>
+			 <%= comments.length %>
+				<h3><%=comments[i].idUtilisateur%></h3>
+				<p><%=comments[i].contenu%></p>
+				<p class="date-comment"><%=new Date(comments[i].datePublication).toLocaleDateString()%></p>
+			</li>
+		<%}%>
+	</ul>
+
+</section>
+<form action="/add_comment/<%=article.id%>" method="post" style="border:1px solid green;">
+	<p><label>Pseudo</label></p>
+	<p><input type="text" name="pseudo"></p>
+	
+	<p><label>commentaire</label></p>
+	<p><textarea name="content"></textarea></p>
+	<input type="submit" name="Enregistrer">
+</form>

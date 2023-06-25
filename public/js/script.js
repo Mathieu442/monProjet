@@ -33,3 +33,17 @@ function closeNav() {
         window.location.href = '/register'; // Remplace '/inscription' par l'URL réelle de ta page d'inscription
       });
     });
+
+
+document.addEventListener('DOMContentLoaded', () => {
+  const articleImg = document.querySelectorAll('.article_img');
+
+  articleImg.forEach(button => {
+    button.addEventListener('click', () => {
+      const articleId = button.getAttribute('contenu-article-id');
+      // Effectuez une action supplémentaire en fonction de l'ID de l'article
+      // par exemple, effectuer une requête AJAX vers le serveur pour obtenir plus de détails sur l'article
+      console.log('Article ID:', articleId);
+    });
+  });
+});

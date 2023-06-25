@@ -1,6 +1,6 @@
 import express from "express";
 import session from 'express-session';
-import router from "./router/route.js";
+import router from "../router/route.js";
 import parseurl from "parseurl";
 import Joi from '@hapi/joi'
 

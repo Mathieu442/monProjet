@@ -3,11 +3,13 @@ import express from 'express';
 const router = express.Router()
 
 import homeController from "../controllers/home.js";
-import { ListArticles, AddComment } from "../controllers/requete.js";
+import { AddComment } from "../controllers/article.js";
+import { ListArticles } from "../controllers/articles.js";
 import { AddPost, AddPostSubmit, Admin, DeletePost, EditPost, EditPostSubmit } from "../controllers/admin.js";
 import { Login, LoginSubmit, Logout } from '../controllers/login.js';
 import { Register, RegisterSubmit } from '../controllers/register.js';
 import { Gallery } from '../controllers/gallery.js';
+import { ShowArticle } from '../controllers/article.js';
 
 
 router.get('/', homeController);
@@ -38,6 +40,9 @@ router.post('/register', RegisterSubmit);
 
 //DETAIL PAGE
 router.get('/articles', ListArticles);
+
+router.get('/article/:id', ShowArticle);
+
 
 //ADD COMMENTS
 router.post('/add_comment/:id', AddComment);

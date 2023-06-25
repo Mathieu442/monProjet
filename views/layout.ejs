@@ -1,64 +1,70 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
-    <meta charset="utf-8">
-    <title>Blog</title>
+  <meta charset="utf-8">
+  <title>Blog</title>
 
-    <!-- Feuilles de style externes -->
-    <link rel="stylesheet" href="/css/normalize.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!-- Feuilles de style externes -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
+
 <body>
-    <!-- En-tête commune de l'application -->
-    <header class="header">
-        <div class="search">
-            <nav>
-                <div id="mySidenav" class="sidenav">
-  <a id="closeBtn" href="#" class="close">×</a>
-  <ul>
-    <li><a href="/admin">Accueil</a></li>
-    <li><a href="/articles">Bons plans et astuces</a></li>
-    <li><a href="/gallery">Galerie</a></li>
-    <li><a href="/login">Connexion</a></li>
-    <li><a href="/register">Inscription</a></li>
-  </ul>
-</div>
-
-<a href="#" id="openBtn">
-  <span class="burger-icon">
-    <span></span>
-    <span></span>
-    <span></span>
-  </span>
-</a>
-
-<div class ="header">
-    <input type="search" id="maRecherche" name="searchbar" placeholder="Rechercher sur le site…">
-    <button class = "maRecherche"><i class="fa-solid fa-magnifying-glass"></i></button>
-  </div>
-  
-            </nav>
+    <div class="searchBar">
+          <input type="search" id="maRecherche" name="searchbar" placeholder="Rechercher sur le site…">
+          <button class="maRecherche"><i class="fa-solid fa-magnifying-glass"></i></button>
         </div>
-        
-          <%- include(template) -%> 
-        
-        	<form>
-  
-</form>
-    </header>
+  <!-- En-tête commune de l'application -->
+  <header class="header">
+    <div class="search">
+      <nav>
+        <div id="mySidenav" class="sidenav">
+          <a id="closeBtn" href="#" class="close">×</a>
+          <ul>
+            <li><a href="/admin">Accueil</a></li>
+            <li><a href="/articles">Bons plans et astuces</a></li>
+            <li><a href="/gallery">Galerie</a></li>
+            <li><a href="/login">Connexion</a></li>
+            <li><a href="/register">Inscription</a></li>
+          </ul>
+        </div>
 
-    <main>
-     
-      
-    </main>
+        <a href="#" id="openBtn">
+          <span class="burger-icon">
+            <span></span>
+            <span></span>
+            <span></span>
+          </span>
+        </a>
 
-    <!-- Pied de page commun de l'application -->
-    <footer class="footer">
-         <p class = "pFoot"><img src="img/logo.jpg" alt="logo boussole" class= "logo">by floridadventure.fr</p>
-    </footer>
-    <script language="javascript" src="/js/script.js"></script>
+
+      </nav>
+    </div>
+
+
+
+
+  </header>
+<div>
+  <main>
+
+    <%- include(template) -%>
+
+  </main>
+  </div>
+
+  <!-- Pied de page commun de l'application -->
+  <div>
+  <footer>
+    <p class="pFoot"><img src="img/logo.jpg" alt="logo boussole" class="logo">by floridadventure.fr</p>
+  </footer>
+  </div>
+  <script language="javascript" src="/js/script.js"></script>
 </body>
+
 </html>
