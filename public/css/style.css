@@ -11,15 +11,14 @@ html {
 }
 
 body {
-  max-height: 100vh;
+  min-height: 1000px;
   overflow-y: auto;
-  height: 100vh;
 }
 
 .sidenav {
   height: 100%;
   width: 300px;
-  position: fixed;
+  position: absolute;
   z-index: 1;
   top: 0;
   left: -400px;
@@ -40,8 +39,8 @@ body {
 }
 
 .sidenav a:hover {
-  color: white;
-  font-size: 20px;
+  color: black;
+  font-size: 22px;
 }
 
 .sidenav ul {
@@ -75,38 +74,11 @@ body {
   margin: 6px 0;
 }
 
-/*.center {*/
-/*  width: 30%;*/
-/*  justify-content : center;  */
-/*  padding: 100% 0 0 0 !important;*/
-/*  background-color: #2583BA;*/
-/*  margin-left : 20em;*/
-/*}*/
-
-/*.titre {*/
-/*	position: absolute !important;*/
-/*	top: 0;*/
-/*	bottom: 0;*/
-/*	right: 0;*/
-/*	left: 0;*/
-/*	display: flex;*/
-/*	justify-content: center;*/
-/*	align-items: center;*/
-/*}*/
-
-/*.titre p {*/
-/*	font-size: 24px;*/
-/*	color: #fff;*/
-/*	text-align: center;*/
-/*	padding-left: 30px;*/
-/*	padding-right: 30px*/
-/*}*/
-
 .col-size {
   width: 25%;
   padding: 15%;
   background: #2583BA;
-  position: absolute;
+  position: fixed;
   top: 50%; 
   left: 50%; 
   transform: translate(-50%, -50%); 
@@ -117,12 +89,13 @@ body {
 	bottom: 0;
 	right: 0;
 	left: 0;
-  position: absolute; 
+  position: fixed; 
   top: 50%; 
   left: 50%; 
   transform: translate(-50%, -50%); 
 	font-size : 400%;
 	font-family : 'Poppins', cursive;
+	z-index : 1;
 }
 
 .vert-center p {
@@ -131,6 +104,7 @@ body {
 	text-align: center;
 	padding-left: 80%;
 	padding-top : 40%;
+	z-index : 2;
 }
 
 h1 {
@@ -203,13 +177,21 @@ h1 {
   background-position: 100% 90%;
 }
 
-.imgFond:hover {
-  backdrop-filter: blur(5px);
-  transition: filter 0.3s ease; 
+.imgFond::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backdrop-filter: blur(5px); /* Flou appliqué à l'élément */
+  opacity: 0; /* Initialiser l'opacité à 0 */
+  transition: opacity 0.3s ease; /* Transition de l'opacité */
 }
 
-.imgFond:hover::before {
-  opacity: 0; /* Réduit l'opacité pour obtenir l'effet de flou */
+.imgFond:hover::after {
+  opacity: 1; /* Augmenter l'opacité au survol pour afficher le flou */
+  z-index : -1;
 }
 
 .header {
@@ -238,31 +220,58 @@ h1 {
   justify-content: space-between;
 }
 
-.site {
-  font-size: 0.5em;
-}
 
 /********** FOOTER *************/
 
+
 footer {
   background-color: #2583BA;
-  text-align: center;
-  padding: 10px;
-  display: block;
-  position : absolute;
-  bottom : 0;
+  padding: 3rem;
   width : 100%;
+  bottom : 0;
+  position : fixed;
 }
 
 .pFoot {
   text-align: left;
   font-size: 2.5em;
   margin-left: 1em;
-  font-family : 'Caveat', cursive;
 }
 
-.pFoot::before {
-	content:"\f14e";
+.site {
+  font-family : 'Caveat', cursive;
+  text-decoration : none;
+  color : black;
+  padding-top : 2rem;
+}
+
+.pictos a::before {
+	font-family: 'Font Awesome 5 Brands';
+	float : right;
+	color: white;
+	font-size: 2rem;
+	margin-right : 1rem;
+}
+
+.site::before {
+  font-family : "Font Awesome 5 Pro";
+	 content:"\f5e9";
+}
+
+.facebook::before {
+	content:"\f09a";
+}
+
+.twitter::before {
+	content:"\f099";
+}
+
+.instagram::before {
+	content:"\f16d";
+}
+
+.youtube::before {
+  content : "\f167";
 }
 
 .logo {
@@ -290,7 +299,6 @@ section {
   margin : 2em;
     background-color:#FFF7DF ;
   flex-wrap : wrap;
-
 }
 
 form {
@@ -307,4 +315,5 @@ main {
 
 .searchBar {
   float: right;
+  clear : both;
 }

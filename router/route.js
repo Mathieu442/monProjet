@@ -14,7 +14,6 @@ import { ShowArticle } from '../controllers/article.js';
 
 router.get('/', homeController);
 
-
 router.get('/admin', Admin);
 
 //LOGIN PAGE
@@ -38,26 +37,32 @@ router.get('/register', Register);
 //REGISTER POST PAGE POST
 router.post('/register', RegisterSubmit);
 
-//DETAIL PAGE
+//LIST ARTICLES
 router.get('/articles', ListArticles);
 
+//DETAILS ARTICLE
 router.get('/article/:id', ShowArticle);
-
 
 //ADD COMMENTS
 router.post('/add_comment/:id', AddComment);
 
 //DELETE POST
-router.delete('/posts/:id', DeletePost);
+router.delete('/delete_post', DeletePost);
 
 //EDIT POST
-router.get('/edit_post/:id', EditPost);
+router.get('/edit_post', EditPost);
 
-//EDIT POST SUBMIT
-router.put('/posts/:id', EditPostSubmit);
+//EDIT POST PAGE POST
+router.post('/edit_post', EditPostSubmit);
 
+//SHOW GALLERY
 router.get('/gallery', Gallery)
 
+router.get('/confirmation', (req, res) => {
+  // Logique pour afficher la page de confirmation ici
+    res.send('<h1>Inscription confirmée</h1>');
+
+});
 
 export default router;
 
