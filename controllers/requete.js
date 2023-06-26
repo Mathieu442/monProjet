@@ -77,8 +77,6 @@ schema.validate({});
 
 
 
-
-
 app.get('/confirmation', (req, res) => {
   // Logique pour afficher la page de confirmation ici
     res.send('<h1>Inscription confirmée</h1>');

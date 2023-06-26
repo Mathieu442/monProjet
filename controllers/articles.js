@@ -13,8 +13,6 @@ export const  ListArticles =  (req, res) => {
          console.log(error);
 	     console.log(post)
 	     console.log(post)
-
-	        
 	        res.render('layout', {template: 'articles', post: post});
 	 	});
 	 

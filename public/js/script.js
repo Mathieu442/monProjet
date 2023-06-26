@@ -19,6 +19,7 @@ function closeNav() {
 
 //------------------------------------------------------------------------------
 
+//Ajout d'un gestionnaire d'événements click à chaque bouton. Lorsque le bouton est cliqué, nous récupérons l'ID de l'article à partir de l'attribut data-article-id et nous pouvons effectuer une action supplémentaire en fonction de cet ID (par exemple, effectuer une requête AJAX vers le serveur pour obtenir plus de détails sur l'article).
 
  document.addEventListener('DOMContentLoaded', function() {
       // Sélectionne l'élément de lien d'inscription

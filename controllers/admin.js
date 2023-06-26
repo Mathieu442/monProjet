@@ -3,8 +3,9 @@ import  fs  from "fs";
 import  formidable  from "formidable";
 import  { v4 as uuidv4 } from 'uuid';
 
+
 export const Admin =  (req, res) => {
-    let sql = 'SELECT Articles.id, titre, contenu, dateCreation FROM Articles INNER JOIN category ON Articles.category_id = category.Id ORDER BY Articles.date DESC';
+    let sql = 'SELECT Administrateur.id, email, motDePasse FROM Administrateur'
 	pool.query(sql, function (error, posts, fields) {
         
 	        res.render('layout', {template: 'admin', posts: posts});
@@ -128,13 +129,13 @@ export const EditPostSubmit = (req, res) => {
 	let id = req.params.id;
 
 	// requete de modification d'un post
-	let sql = 'UPDATE Articles SET titre = ?, description = ? WHERE id = ?';
+	let sql = 'UPDATE Articles SET titre = ?, contenu = ?, dateCreation = ?, WHERE id = ?';
 
-	pool.query(sql, [req.body.title, req.body.content, id], function (error, result, fields) {
+	pool.query(sql, [req.body.titre, req.body.contenu, req.body.dateCreation, id], function (error, result, fields) {
 	    if (error) {
 	        console.log(error)
 	        res.status(500).send({
-	            error: 'Error when update post'
+	            error: 'Erreur lors du chargement de l\'article'
 	        });
 	    } else {
 	        res.status(204).send();

@@ -1,9 +1,6 @@
 import pool from "../config/database.js";
 import { v4 as uuidv4 } from 'uuid';
 
-
-
-
 export const ShowArticle = (req, res) => {
     // il y a plusieurs article on récupère un paramètre id dans l'url pour pouvoir executer la bonne requête sql en fonction du bon article
     let id = req.params.id;
@@ -45,8 +42,6 @@ export const ShowArticle = (req, res) => {
 
 
 
-//utilison de querySelectorAll pour sélectionner tous les boutons d'article. 
-//Ajout d'un gestionnaire d'événements click à chaque bouton. Lorsque le bouton est cliqué, nous récupérons l'ID de l'article à partir de l'attribut data-article-id et nous pouvons effectuer une action supplémentaire en fonction de cet ID (par exemple, effectuer une requête AJAX vers le serveur pour obtenir plus de détails sur l'article).
 
 export const AddComment = (req, res) => {
     let id = req.params.id;
