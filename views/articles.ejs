@@ -2,6 +2,9 @@
 
 <section>
     <% for (let i = 0; i < post.length; i++){ %>
+    <% if (isAdmin){ %>
+         <a href = "edit_post/<%= post[i].id %>"/> Modifier l'article </a>
+   <% } %>
         <article class= "article"><h2> <%= post[i].titre %></h2>    
     <a href = "/article/<%= post[i].id %>"/>
         <img class = "article_img" src="<%=post[i].contenu.split('\n')[0] %>" alt = "Image de l'article"/>
@@ -10,3 +13,4 @@
         </article>
     <% } %>
 </section>
+

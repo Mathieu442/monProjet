@@ -113,14 +113,15 @@ export const DeletePost = (req, res) => {
 export const EditPost = (req, res) => {
     
 	let id = req.params.id;
-
+   
 	// on récupère déjà l'ancien article 
 	let sql = 'SELECT * FROM Articles WHERE id = ?';
-
-	pool.query(sql, [id], function (error, post, fields) {
-
+    console.log(sql)
+	pool.query(sql, [id], function (error, post) {
+    
 	        // appel du template pour édition de post
-	        res.render('layout', {template: 'edit_post', post: post[0]});
+	        res.render('layout', {template: 'edit_post', article : post[0]});
+
 	 });
 }
 
@@ -129,7 +130,7 @@ export const EditPostSubmit = (req, res) => {
 	let id = req.params.id;
 
 	// requete de modification d'un post
-	let sql = 'UPDATE Articles SET titre = ?, contenu = ?, dateCreation = ?, WHERE id = ?';
+	let sql = 'UPDATE Articles SET titre = ?, contenu = ?, dateCreation = ? WHERE id = ?';
 
 	pool.query(sql, [req.body.titre, req.body.contenu, req.body.dateCreation, id], function (error, result, fields) {
 	    if (error) {
@@ -138,7 +139,7 @@ export const EditPostSubmit = (req, res) => {
 	            error: 'Erreur lors du chargement de l\'article'
 	        });
 	    } else {
-	        res.status(204).send();
+	        res.status(200).send();
 	    }
 	 });
 }

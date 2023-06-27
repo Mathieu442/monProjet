@@ -50,10 +50,10 @@ router.post('/add_comment/:id', AddComment);
 router.delete('/delete_post', DeletePost);
 
 //EDIT POST
-router.get('/edit_post', EditPost);
+router.get('/edit_post/:id', EditPost);
 
 //EDIT POST PAGE POST
-router.post('/edit_post', EditPostSubmit);
+router.post('/edit_post/:id', EditPostSubmit);
 
 //SHOW GALLERY
 router.get('/gallery', Gallery)
