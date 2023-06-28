@@ -25,7 +25,6 @@ export const LoginSubmit = function (req, res) {
                     }
                 })
             }
-
         }
     });
 }
@@ -35,7 +34,6 @@ export const Logout = function (req, res) {
         if (error) {
             console.error(error);
         }
-        
         // Redirection sur page d'accueil
         res.redirect('/');
     });

@@ -25,6 +25,7 @@ body {
   background-color: #2583BA;
   padding-top: 60px;
   transition: left 0.5s ease;
+  opacity : 0.90;
 }
 
 /* Sidenav menu links */
@@ -61,7 +62,11 @@ body {
   position: absolute;
   top: 0;
   right: 25px;
-  font-size: 36px;
+  font-size: 22px;
+}
+
+.close:hover {
+  font-size : 36px;
 }
 
 /* Icône burger */
@@ -229,7 +234,7 @@ footer {
   padding: 3rem;
   width : 100%;
   bottom : 0;
-  position : fixed;
+  position : relative;
 }
 
 .pFoot {
@@ -317,3 +322,4 @@ main {
   float: right;
   clear : both;
 }
+

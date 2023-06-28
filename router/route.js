@@ -47,7 +47,8 @@ router.get('/article/:id', ShowArticle);
 router.post('/add_comment/:id', AddComment);
 
 //DELETE POST
-router.delete('/delete_post', DeletePost);
+router.delete('/posts/:id', DeletePost);
+
 
 //EDIT POST
 router.get('/edit_post/:id', EditPost);
@@ -58,11 +59,6 @@ router.post('/edit_post/:id', EditPostSubmit);
 //SHOW GALLERY
 router.get('/gallery', Gallery)
 
-router.get('/confirmation', (req, res) => {
-  // Logique pour afficher la page de confirmation ici
-    res.send('<h1>Inscription confirmée</h1>');
-
-});
 
 export default router;
 

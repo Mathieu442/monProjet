@@ -40,11 +40,27 @@ export const ShowArticle = (req, res) => {
 
 }
 
-
-
-
 export const AddComment = (req, res) => {
     let id = req.params.id;
+    
+    
+    // Middleware pour vérifier si l'utilisateur est un administrateur
+	function isUser(req, res, next) {
+
+    if (req.user && req.user.role === 'Administrateur') {
+    // L'utilisateur est un administrateur, continuer vers la route suivante
+    res.redirect('/add_comment');
+    }
+    
+    else if (req.user && req.user.role === 'Utilisateur') {
+    res.redirect('/add_comment');
+
+  } else {
+    // L'utilisateur n'est pas autorisé, renvoyer une erreur 403 (Accès interdit)
+    res.status(403).json({ error: 'Accès interdit' });
+  }
+}
+
     let sql = 'INSERT INTO Commentaires (idCommentaire, contenu, datePublication, idUtilisateur, idArticle) VALUES (?, ?, NOW(), ?, ?)';
     pool.query(sql, [uuidv4(), req.body.content, req.body.pseudo, id], function(error, result, fields) {
         console.log(error);
