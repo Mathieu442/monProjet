@@ -49,16 +49,14 @@ router.post('/add_comment/:id', AddComment);
 //DELETE POST
 router.delete('/posts/:id', DeletePost);
 
-
 //EDIT POST
 router.get('/edit_post/:id', EditPost);
 
 //EDIT POST PAGE POST
-router.post('/edit_post/:id', EditPostSubmit);
+router.put('/posts/:id', EditPostSubmit);
 
 //SHOW GALLERY
 router.get('/gallery', Gallery)
 
 
 export default router;
-

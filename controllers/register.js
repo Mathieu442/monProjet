@@ -4,7 +4,7 @@ import bcrypt from 'bcrypt';
 import express from 'express';
 
 
-export const Register = function (req, res) {
+export const Register = function(req, res) {
   const errors = {};
 
   // Vérification du pseudo
@@ -32,17 +32,19 @@ export const Register = function (req, res) {
   if (Object.keys(errors).length > 0) {
     console.error('Erreurs de validation :', errors);
     // Faites quelque chose pour gérer les erreurs de validation, par exemple, renvoyer un message d'erreur à l'utilisateur
-  } else {
+  }
+  else {
     // Les données sont valides, vous pouvez continuer avec l'enregistrement de l'utilisateur
     RegisterSubmit(req, res);
   }
 };
 
-export const RegisterSubmit = function (req, res) {
-  bcrypt.hash(req.body.motDePasse, 10, function (error, hash) {
+export const RegisterSubmit = function(req, res) {
+  bcrypt.hash(req.body.motDePasse, 10, function(error, hash) {
     if (error) {
       console.log(error);
-    } else {
+    }
+    else {
       const newUser = {
         nom: req.body.nom,
         prenom: req.body.prenom,
@@ -52,19 +54,15 @@ export const RegisterSubmit = function (req, res) {
         motDePasse: hash,
       };
 
-      pool.query('INSERT INTO Utilisateur SET ?', [newUser], function (error, result) {
-        if (error){
-         res.status(500).send('Erreur de base de données');
-                } else {
-                    req.session.role = 'user';
-                    res.redirect('/add_comment');
-                }
-            });
+      pool.query('INSERT INTO Utilisateur SET ?', [newUser], function(error, result) {
+        if (error) {
+          res.status(500).send('Erreur de base de données');
         }
-    });
+        else {
+          req.session.role = 'user';
+          res.redirect('/add_comment');
+        }
+      });
+    }
+  });
 }
-
- 
-
-
-

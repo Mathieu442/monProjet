@@ -4,7 +4,7 @@
     <% for (let i = 0; i < post.length; i++){ %>
     <% if (isAdmin){ %>
         <a href="/add_post">Ajoutez un article</a>
-<a href="/edit_post" class="js-post-edit-form" data-id="<%= post[i].id %>"> Modifier l'article </a>
+        <a class="js-post-edit-form" href="/edit_post/<%= post[i].id %>"> Modifier l'article </a>
          <button class="js-remove-post-button" data-id ="<%= post[i].id %>" /> Supprimer l'article </button>
    <% } %>
   

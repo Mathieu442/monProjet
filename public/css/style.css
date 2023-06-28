@@ -221,9 +221,6 @@ h1 {
   color: #2583BA;
 }
 
-.search {
-  justify-content: space-between;
-}
 
 
 /********** FOOTER *************/
@@ -322,4 +319,3 @@ main {
   float: right;
   clear : both;
 }
-

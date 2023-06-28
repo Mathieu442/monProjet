@@ -156,10 +156,8 @@ export const EditPost = (req, res) => {
     let sql = 'SELECT * FROM Articles WHERE id = ?';
     console.log(sql)
     pool.query(sql, [id], function(error, post) {
-
         // appel du template pour édition de post
-        res.render('layout', { template: 'edit_post', article: post[0] });
-
+        res.render('layout', { template: 'edit_post', article: post[0]});
     });
 }
 

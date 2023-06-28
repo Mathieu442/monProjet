@@ -4,9 +4,9 @@
 <form action="/edit_post" enctype="multipart/form-data" class='js-post-edit-form' method="post">
 	<input type="hidden" name="id" value="<%= article.id %>" />
 	<label>Titre de l'article</label>
-	<input type="text" name="title" value="<%= article.titre %>">
+	<input type="text" name="titre" value="<%= article.titre %>">
 	<label>contenu de l'article</label>
-	<textarea name="content"><%= article.contenu %></textarea>
+	<textarea class = "article_img" rows="20" cols="50" name="contenu"><%= article.contenu %></textarea>
 	
 	<button class='js-form-submit'>Enregistrer</button>
 </form>

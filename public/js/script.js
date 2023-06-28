@@ -71,8 +71,9 @@ function removePostButtonEventListener(event) {
         .then(function(response) {
             if (response.ok) {
                 // Récupérer la ligne à supprimer
-                const postElement = document.querySelector(`.js-post-table tr[data-id="${id}"]`);
-                postElement.remove();
+                // const postElement = document.querySelector(`[data-id="${id}"]`);
+                // postElement.remove();
+                window.location.href = "/articles"
             }
             else {
                 if (response.status === 403) {
@@ -94,13 +95,13 @@ function removePostButtonEventListener(event) {
         event.preventDefault();
         const form = event.target.parentElement;
         const id = form.querySelector('input[name="id"]').value;
-        const title = form.querySelector('input[name="title"]').value;
-        const content = form.querySelector('textarea[name="content"]').value;
+        const titre = form.querySelector('input[name="titre"]').value;
+        const contenu = form.querySelector('textarea[name="contenu"]').value;
 
         const data = {
             id,
-            title,
-            content
+            titre,
+            contenu
         };
 
         const options = {
@@ -146,3 +147,23 @@ function removePostButtonEventListener(event) {
             editPostButton.addEventListener('click', editPostEventListener);
         }
     });
+
+  //----------------------------------------------------------------------------
+  
+  // Sélection ldu bouton de recherche
+const searchButton = document.querySelector('.searchBar');
+
+// Définissez la fonction à exécuter lors du clic sur le bouton de recherche
+function handleSearch() {
+  // Récupérez la valeur du champ de recherche
+  const searchInput = document.querySelector('#maRecherche').value;
+
+  // Effectuez les actions de recherche appropriées
+  // par exemple, effectuer une requête AJAX vers votre serveur
+
+  // Exemple de console.log pour afficher la valeur de recherche
+  console.log('Recherche effectuée:', searchInput);
+}
+
+// Ajoutez un écouteur d'événement de clic au bouton de recherche
+searchButton.addEventListener('click', handleSearch);
