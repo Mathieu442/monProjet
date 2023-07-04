@@ -1,7 +1,6 @@
 import pool from '../config/database.js';
 import { v4 as uuidv4 } from 'uuid';
 import bcrypt from 'bcrypt';
-import express from 'express';
 
 
 export const Register = function(req, res) {
@@ -65,4 +64,4 @@ export const RegisterSubmit = function(req, res) {
       });
     }
   });
-}
+};

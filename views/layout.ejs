@@ -16,17 +16,20 @@
 
 <body>
     <div class="searchBar">
-          <input type="search" id="maRecherche" name="searchbar" placeholder="Rechercher sur le site…">
+          <input type="search" id="maRecherche" name="searchbar" placeholder="Rechercher sur le site…" aria-label="Rechercher parmi le contenu du site">
           <button class="maRecherche"><i class="fa-solid fa-magnifying-glass"></i></button>
+          <button id="dyslexic-mode-toggle">Activer le mode dyslexique</button>
+
         </div>
   <!-- En-tête commune de l'application -->
   <header class="header">
     <div class="search">
       <nav>
-        <div id="mySidenav" class="sidenav">
+        <div id="mySidenav" class="sidenav burger-icon">
           <a id="closeBtn" href="#" class="close">×</a>
+          
           <ul>
-            <li><a href="/admin">Accueil</a></li>
+            <li><a href="/">Accueil</a></li>
             <li><a href="/articles">Bons plans et astuces</a></li>
             <li><a href="/gallery">Galerie</a></li>
             <li><a href="/login">Connexion</a></li>
@@ -46,32 +49,24 @@
 
       </nav>
     </div>
-
-
-
-
   </header>
-<div>
   <main>
 
     <%- include(template) -%>
 
   </main>
-  </div>
 
   <!-- Pied de page commun de l'application -->
-  <div>
+  
   <footer>
     <div class="pFoot pictos">
-      <a href="#http://mathieugilbert.sites.3wa.io:3000" class="site">floridadventure.fr</a>
+        <a href="#http://mathieugilbert.sites.3wa.io:3000" class="site">floridadventure.fr</a>
         <a href="#" class="twitter"></a>
 				<a href="#" class="facebook"></a>
 				<a href="#" class="instagram"></a>
 				<a href="#" class="youtube"></a>
     </div>
-    
   </footer>
-  </div>
   <script language="javascript" src="/js/script.js"></script>
 </body>
 

@@ -18,7 +18,7 @@ body {
 .sidenav {
   height: 100%;
   width: 300px;
-  position: absolute;
+  position: fixed;
   z-index: 1;
   top: 0;
   left: -400px;
@@ -80,13 +80,13 @@ body {
 }
 
 .col-size {
-  width: 25%;
-  padding: 15%;
+  width: 39%;
+  padding: 7%;
   background: #2583BA;
-  position: fixed;
-  top: 50%; 
-  left: 50%; 
-  transform: translate(-50%, -50%); 
+  /*position: fixed;*/
+  top:70%; 
+  left: 40%; 
+  transform: translate(78%, 70%); 
 }
 
 .vert-center {
@@ -94,11 +94,11 @@ body {
 	bottom: 0;
 	right: 0;
 	left: 0;
-  position: fixed; 
+  /*position: fixed; */
   top: 50%; 
   left: 50%; 
-  transform: translate(-50%, -50%); 
-	font-size : 400%;
+  transform: translate(2%, -8%); 
+	font-size : 535%;
 	font-family : 'Poppins', cursive;
 	z-index : 1;
 }
@@ -119,7 +119,6 @@ h1 {
   background-color : #2583BA;
   padding : 2em;
 }
-
 
 .gallery {
   background: #55cceb;
@@ -179,12 +178,12 @@ h1 {
   background-image: url(../img/imgFond.JPG);
   background-size: cover;
   background-repeat: no-repeat;
-  background-position: 100% 90%;
+  background-position: 100% 100%;
 }
 
 .imgFond::after {
   content: "";
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
@@ -209,6 +208,7 @@ h1 {
 .container {
   max-width: 1400px;
 	margin: auto;
+	position : relative;
 }
 
 .search {
@@ -222,16 +222,13 @@ h1 {
 }
 
 
-
 /********** FOOTER *************/
-
 
 footer {
   background-color: #2583BA;
   padding: 3rem;
   width : 100%;
   bottom : 0;
-  position : relative;
 }
 
 .pFoot {
@@ -253,11 +250,6 @@ footer {
 	color: white;
 	font-size: 2rem;
 	margin-right : 1rem;
-}
-
-.site::before {
-  font-family : "Font Awesome 5 Pro";
-	 content:"\f5e9";
 }
 
 .facebook::before {
@@ -283,24 +275,25 @@ footer {
 }
 
 .article_img {
-  width: 40rem;
+  width: 90%;
 }
 
 .article {
-  width: 50%;
-  border: 1px solid black;
-  padding: 1em;
-  margin : 3em;
-  text-align : center;
   background-color : #e5e3e3;
+  width: 70%;
+  border: 1px solid black;
+  padding: 6em;
+  margin : 15em;
+  text-align : center;
 }
 
 section {
   display: block;
   text-align : center;
-  margin : 2em;
-    background-color:#FFF7DF ;
+  margin : 0em;
+  background-color:#FFF7DF ;
   flex-wrap : wrap;
+  flex-basis: calc(100% / 3 - 2rem);
 }
 
 form {
@@ -310,12 +303,162 @@ form {
   height: auto;
 }
 
-main {
-  display: block;
-  margin: 2em;
-}
-
 .searchBar {
   float: right;
   clear : both;
+}
+
+
+@media (max-width: 767px) {
+  
+  .sidenav {
+ height: 100%;
+  width: 300px;
+  position: fixed;
+  z-index: 1;
+  top: -100%;
+  left: 0;
+  background-color: #2583BA;
+  padding-top: 60px;
+  transition: top 0.5s ease;
+  opacity: 0.9;
+  }
+
+  .sidenav.active {
+    transform: translateX(0%);
+  }
+
+  .burger-icon {
+    position: fixed;
+    top: 0;
+    right: 10px;
+    margin-top: 10px;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 20px;
+    cursor: pointer;
+  }
+
+  .burger-icon span {
+    width: 100%;
+    height: 3px;
+    background-color: white;
+  }
+
+  .sidenav a {
+    padding: 8px 8px 8px 16px;
+    font-size: 18px;
+    color: white;
+    display: block;
+    transition: 0.3s;
+  }
+  
+  /* Autres modifications si nécessaires pour les petits écrans */
+}
+
+@media (max-width: 767px) {
+  .sidenav.active {
+    top: 0;
+  }
+
+  .sidenav .close {
+    top: 10px;
+    right: 10px;
+  }
+}
+
+/*MODE SOMBRE*/
+
+@media (prefers-color-scheme: dark) {
+body {
+background-color: #1c1c1e;
+color: #fefefe;
+}
+a {
+color: #5fa9ee;
+}
+img {
+filter: grayscale(20%);
+}
+}
+
+body.dark-mode {
+  /* Styles pour le mode sombre */
+  background-color: #1c1c1e;
+  color: #fefefe;
+}
+
+body.dark-mode a {
+  /* Styles pour les liens en mode sombre */
+  color: #5fa9ee;
+}
+
+body.dark-mode img {
+  /* Styles pour les images en mode sombre */
+  filter: grayscale(20%);
+}
+
+/*DYSLEXIC MODE*/
+
+body.dyslexic-mode {
+  font-family: Arial, sans-serif;
+  font-size : 15px;
+  letter-spacing: 0.1em;
+  word-spacing: 0.2em;
+  line-height: 1.5;
+  background-color: #f1f1f1;
+  color: #000000;
+}
+
+body.dyslexic-mode a {
+  color: #0000ff;
+  text-decoration: underline;
+}
+
+body.dyslexic-mode p,
+body.dyslexic-mode h1,
+body.dyslexic-mode h2 {
+  margin-bottom: 0.5em;
+}
+
+body.dyslexic-mode .dyslexic-text {
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+body.dyslexic-mode .dyslexic-highlight {
+  background-color: #ffff00;
+}
+
+body.dyslexic-mode .dyslexic-replace {
+  color: #ff0000;
+}
+
+body.dyslexic-mode .dyslexic-flip {
+  transform: scaleX(-1);
+}
+
+body.dyslexic-mode .dyslexic-rotate {
+  transform: rotate(180deg);
+}
+
+/*ANIMATION*/
+
+@keyframes vacation-animation {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.vacation-animation-element {
+  animation: vacation-animation 2s ease-in-out infinite;
 }

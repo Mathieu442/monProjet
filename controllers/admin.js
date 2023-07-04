@@ -2,6 +2,8 @@ import pool from "../config/database.js";
 import fs from "fs";
 import formidable from "formidable";
 import { v4 as uuidv4 } from 'uuid';
+import path from "path"
+
 
 
 export const Admin = (req, res) => {
@@ -47,10 +49,12 @@ export const AddPostSubmit = (req, res) => {
 
     const SIZE_MAX = 5 * 1024 * 1024
 
+    const __dirname = path.resolve();
+
     // option 1
     const authorizedExtention = ["jpg", "jpeg", "png", "JPG", "JPEG", "PNG"]
 
-    //option 2
+   // option 2
     const authorizedExtention2 = ["image/jpeg", "image/png", "image/jpg", ]
 
     const form = new formidable.IncomingForm();
@@ -78,16 +82,17 @@ export const AddPostSubmit = (req, res) => {
         const extension = files.myfile.originalFilename.split(".").pop()
         console.log(extension)
         // le dosssier finale
-        const newPath = "public/upload/" + files.myfile.newFilename + "." + extension
+        const newPath = "upload/" + files.myfile.newFilename + "." + extension
         console.log(newPath)
         // option 1
         if (!authorizedExtention.includes(extension)) {
             return res.status(500).send("Le fichier n'a pas la bonne extention")
         }
 
-        // option 2
+       // option 2
         if (!authorizedExtention2.includes(files.myfile.mimetype)) {
             return res.status(500).send("Le fichier n'a pas la bonne extention")
+          
         }
 
         fs.copyFile(path, newPath, (err) => {
@@ -157,7 +162,9 @@ export const EditPost = (req, res) => {
     console.log(sql)
     pool.query(sql, [id], function(error, post) {
         // appel du template pour édition de post
-        res.render('layout', { template: 'edit_post', article: post[0]});
+        res.render('layout', { template: 'edit_post', article: post[0] });
+        
+
     });
 }
 
