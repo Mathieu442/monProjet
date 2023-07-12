@@ -1,12 +1,17 @@
 <script src="login.js"></script>
 
-<h1>Veuillez vous identifier</h1>
 
-<form action="/login" method="post">
-	<label for="email">Email</label>
-	<input type="text" id="email" name="email">
-	<label for="motDePasse">Mot de passe</label>
-	<input type="password" id="motDePasse" name="motDePasse">
+<h1>Connexion</h1>
+
+
+<form class = "form" action="/login" method="post">
 	
-	<input type="submit" value="S'identifier">
+	<p class="connect-register">Se connecter</p>
+
+	<label for="email">Email</label>
+	<input class="input" type="text" id="email" name="email">
+	<label for="motDePasse">Mot de passe</label>
+	<input class="input" type="password" id="motDePasse" name="motDePasse">
+
+	<input class="button" type="submit" value="S'identifier">
 </form>

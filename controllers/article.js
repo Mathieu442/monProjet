@@ -40,27 +40,38 @@ export const ShowArticle = (req, res) => {
 
 }
 
-export const AddComment = (req, res) => {
+export const AddComment = (req, res, next) => {
     let id = req.params.id;
+    let commentText = req.body.comment;
 
-
-    // Middleware pour vérifier si l'utilisateur est un administrateur
+    // Middleware pour vérifier si l'utilisateur est un administrateur ou un utilisateur
     function isUser(req, res, next) {
-
-        if (req.user && req.user.role === 'Administrateur') {
-            // L'utilisateur est un administrateur, continuer vers la route suivante
-            res.redirect('/add_comment');
-        }
-
-        else if (req.user && req.user.role === 'Utilisateur') {
-            res.redirect('/add_comment');
-
+        if (req.user && (req.user.role === 'Administrateur' || req.user.role === 'Utilisateur')) {
+            next(); // L'utilisateur est autorisé, passer à la prochaine fonction de middleware ou à la route suivante
         }
         else {
             // L'utilisateur n'est pas autorisé, renvoyer une erreur 403 (Accès interdit)
             res.status(403).json({ error: 'Accès interdit' });
         }
     }
+
+    // Appel du middleware isUser pour vérifier les autorisations de l'utilisateur
+    isUser(req, res, function() {
+        let sql = 'INSERT INTO Commentaires (idCommentaire, contenu, datePublication, idUtilisateur, idArticle) VALUES (?, ?, NOW(), ?, ?)';
+        let commentId = uuidv4();
+        let userId = req.user.id;
+        let values = [commentId, commentText, userId, id];
+
+        pool.query(sql, values, function(error, result, fields) {
+            if (error) {
+                console.log(error);
+                res.status(500).json({ error: 'Une erreur s\'est produite lors de l\'ajout du commentaire' });
+            }
+            else {
+                res.redirect('/article/' + id);
+            }
+        });
+    });
 
     let sql = 'INSERT INTO Commentaires (idCommentaire, contenu, datePublication, idUtilisateur, idArticle) VALUES (?, ?, NOW(), ?, ?)';
     pool.query(sql, [uuidv4(), req.body.content, req.body.pseudo, id], function(error, result, fields) {

@@ -17,7 +17,7 @@ function closeNav() {
     sidenav.classList.remove("active");
 }
 
-//-------------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 
 document.addEventListener('DOMContentLoaded', () => {
     const articleImg = document.querySelectorAll('.article_img');
@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-//------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 
 function removePostButtonEventListener(event) {
     const buttonElement = event.target;
@@ -70,7 +70,7 @@ function removePostButtonEventListener(event) {
         });
 }
 
-//----------------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 
 function editPostEventListener(event) {
     event.preventDefault();
@@ -112,7 +112,7 @@ function editPostEventListener(event) {
         })
 }
 
-//------------------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 
 document.addEventListener('DOMContentLoaded', function() {
     // Administration posts remove button listener
@@ -131,7 +131,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-//----------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 
 // Sélection ldu bouton de recherche
 const searchButton = document.querySelector('.searchBar');
@@ -162,15 +162,16 @@ if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').match
   document.body.classList.remove('dark-mode');
 }
 
-//-------------------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 
-// Sélectionnez le bouton du mode dyslexique
+// Sélectionne le bouton du mode dyslexique
 const dyslexicModeToggle = document.getElementById('dyslexic-mode-toggle');
 
-// Ajoutez un écouteur d'événements pour le clic sur le bouton
+// Ajoute un écouteur d'événements pour le clic sur le bouton
 dyslexicModeToggle.addEventListener('click', function() {
-  // Basculez la classe "dyslexic-mode" sur l'élément <body>
-  document.body.classList.toggle('dyslexic-mode');
+ 
+// Bascule la classe "dyslexic-mode" sur l'élément <body>
+document.body.classList.toggle('dyslexic-mode');
 });
 
-
+//------------------------------------------------------------------------------

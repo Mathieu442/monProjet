@@ -15,10 +15,11 @@
 </head>
 
 <body>
+  <div class = "container">
     <div class="searchBar">
           <input type="search" id="maRecherche" name="searchbar" placeholder="Rechercher sur le site…" aria-label="Rechercher parmi le contenu du site">
           <button class="maRecherche"><i class="fa-solid fa-magnifying-glass"></i></button>
-          <button id="dyslexic-mode-toggle">Activer le mode dyslexique</button>
+          <button id="dyslexic-mode-toggle">Dyslexic mode</button>
 
         </div>
   <!-- En-tête commune de l'application -->
@@ -50,11 +51,11 @@
       </nav>
     </div>
   </header>
-  <main>
+  <div class= "main">
 
     <%- include(template) -%>
 
-  </main>
+  </div>
 
   <!-- Pied de page commun de l'application -->
   
@@ -67,7 +68,9 @@
 				<a href="#" class="youtube"></a>
     </div>
   </footer>
-  <script language="javascript" src="/js/script.js"></script>
+  </div>
+  <script src="/js/script.js"></script>
+  
 </body>
 
 </html>

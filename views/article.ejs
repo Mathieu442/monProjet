@@ -1,10 +1,9 @@
 <section>
         <article class= "article"><h2> <%= article.titre %></h2>  
-       <p><%= article.titre %></p>
     <a href = "/article/:id<%= article.id %>">
          <img class = "article_img" src="/<%= img_url %>" alt = "Image de l'article"/>
           </a>
-        <p><%-contenu%></p>
+        <p class="texte-article"><%-contenu%></p>
         </article>
 </section>
 
@@ -22,11 +21,11 @@
 	</ul>
 
 </section>
-<form action="/add_comment/<%=article.id%>" method="post" style="border:1px solid green;">
+<form action="/add_comment/<%=article.id%>" method="post" class = "form-article">
 	<p><label>Pseudo</label></p>
-	<p><input type="text" name="pseudo"></p>
+	<p><input class= "pseudo-comm" type="text" name="pseudo"></p>
 	
-	<p><label>commentaire</label></p>
-	<p><textarea name="content"></textarea></p>
-	<input type="submit" name="Enregistrer">
+	<p><label>Commentaire</label></p>
+	<p><textarea class="comm" name="content"></textarea></p>
+	<input class= "button" type="submit" name="Enregistrer">
 </form>

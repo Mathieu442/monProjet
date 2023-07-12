@@ -2,8 +2,8 @@
 ::before,
 ::after {
   box-sizing: border-box;
-  margin: 0;
   padding: 0;
+  text-decoration : none;
 }
 
 html {
@@ -11,9 +11,20 @@ html {
 }
 
 body {
-  min-height: 1000px;
+  height: 1000px;
   overflow-y: auto;
+  background-color: white;
 }
+
+.container {
+  justify-content : column;
+}
+
+.delimit {
+  height : 1200px;
+}
+
+/*Sidenav menu*/
 
 .sidenav {
   height: 100%;
@@ -56,7 +67,7 @@ body {
   left: 0;
 }
 
-/* Close btn */
+/* Close button */
 
 .sidenav .close {
   position: absolute;
@@ -79,12 +90,12 @@ body {
   margin: 6px 0;
 }
 
+/*Text menu*/
+
 .col-size {
   width: 39%;
   padding: 7%;
   background: #2583BA;
-  /*position: fixed;*/
-  top:70%; 
   left: 40%; 
   transform: translate(78%, 70%); 
 }
@@ -94,13 +105,12 @@ body {
 	bottom: 0;
 	right: 0;
 	left: 0;
-  /*position: fixed; */
   top: 50%; 
   left: 50%; 
   transform: translate(2%, -8%); 
 	font-size : 535%;
 	font-family : 'Poppins', cursive;
-	z-index : 1;
+	/*z-index : 1;*/
 }
 
 .vert-center p {
@@ -110,6 +120,7 @@ body {
 	padding-left: 80%;
 	padding-top : 40%;
 	z-index : 2;
+	margin-top : 1rem;
 }
 
 h1 {
@@ -119,6 +130,14 @@ h1 {
   background-color : #2583BA;
   padding : 2em;
 }
+
+h2 {
+  font-size : 30px;
+  font-family : "Bacasime Antique", Cursive;
+  margin-bottom : 3rem;
+}
+
+/*Gallery page*/
 
 .gallery {
   background: #55cceb;
@@ -135,10 +154,14 @@ h1 {
   margin: 15px;
 }
 
+.main {
+  height : 100%;
+}
+
 .gallery img {
   width: 100%;
   height: 100%;
-  object-fit: cover
+  object-fit: cover;
 }
 
 .item2 {
@@ -188,13 +211,21 @@ h1 {
   left: 0;
   width: 100%;
   height: 100%;
-  backdrop-filter: blur(5px); /* Flou appliqué à l'élément */
+  backdrop-filter: blur(5px); /* Flou appliqué à l'élément*/
   opacity: 0; /* Initialiser l'opacité à 0 */
-  transition: opacity 0.3s ease; /* Transition de l'opacité */
+  transition: opacity 0.3s ease; /* Transition de l'opacité*/
 }
 
+.imgFond2 {
+  background-image: url(../img/IMG_3079.JPG);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 100% 100%;
+}
+
+/* Augmente l'opacité au survol pour afficher le flou */
 .imgFond:hover::after {
-  opacity: 1; /* Augmenter l'opacité au survol pour afficher le flou */
+  opacity: 1; 
   z-index : -1;
 }
 
@@ -221,14 +252,57 @@ h1 {
   color: #2583BA;
 }
 
+.input {
+  padding : 2em;
+  border-radius : 30px;
+  margin : 2rem
+}
+
+label {
+ font-size : 2rem; 
+ font-family : "Quicksand", Cursive;
+}
+
+.button {
+  padding : 2em;
+  border-radius : 30px;
+  margin-top : 5rem;
+}
+
+.connect-register {
+  font-size : 3rem;
+  margin-bottom: 10rem;
+  margin-right : 20rem;
+}
+
+.texte-article {
+  font-size : 25px;
+  text-align : center;
+  font-family : "Caveat", Cursive;
+}
+
+.pseudo-comm {
+  width :100%;
+  height : 5rem;
+  border-radius : 10px;
+}
+
+.comm {
+  width : 100%;
+  height : 10rem;
+  border-radius : 5px;
+}
 
 /********** FOOTER *************/
 
 footer {
   background-color: #2583BA;
   padding: 3rem;
-  width : 100%;
+  /*width : 100%;*/
   bottom : 0;
+  left : 2rem;
+  right : 2rem;
+  position : static;
 }
 
 .pFoot {
@@ -274,33 +348,55 @@ footer {
   margin-left: 2em;
 }
 
+/*Article page*/
+
 .article_img {
   width: 90%;
 }
 
-.article {
+.articles {
   background-color : #e5e3e3;
-  width: 70%;
   border: 1px solid black;
-  padding: 6em;
-  margin : 15em;
+  padding: 1%;
+  margin : 17%;
   text-align : center;
+  width : 30rem;
 }
 
-section {
-  display: block;
+.article {
+  background-color : #e5e3e3;
+  border: 1px solid black;
+  padding: 1%;
+  margin : 13%;
   text-align : center;
-  margin : 0em;
-  background-color:#FFF7DF ;
-  flex-wrap : wrap;
-  flex-basis: calc(100% / 3 - 2rem);
+  width : 91rem;
+}
+
+.section {
+  border : 5px solid green;
+  padding: 2em;
+  padding-left : 25%;
 }
 
 form {
-  margin: 1em;
-  padding: 1em;
-  background-color: grey;
+  margin : 1rem;
+  padding: 8rem;
   height: auto;
+  display : flex;
+  flex-direction : column;
+  border-radius : 30px;
+  display : flex;
+  justify-content : space-between;
+  background-color : #d6d6d6;
+}
+
+.form-article {
+  border: 1px solid green;
+  margin-bottom : 3em;
+}
+
+.comment-article {
+  margin-left : 6rem;
 }
 
 .searchBar {
@@ -308,11 +404,16 @@ form {
   clear : both;
 }
 
+.comment-article{
+  font-size : 20px;
+}
+
+
 
 @media (max-width: 767px) {
   
   .sidenav {
- height: 100%;
+  height: 100%;
   width: 300px;
   position: fixed;
   z-index: 1;
@@ -356,8 +457,9 @@ form {
     transition: 0.3s;
   }
   
-  /* Autres modifications si nécessaires pour les petits écrans */
 }
+
+  /* Autres modifications si nécessaires pour les petits écrans */
 
 @media (max-width: 767px) {
   .sidenav.active {

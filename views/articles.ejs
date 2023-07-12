@@ -1,16 +1,17 @@
-<h1> Astuces, conseils, meilleurs endroits à visiter</h1>
+<body class="imgFond2">
 
-<section>
-        
+<h1>Astuces, conseils, meilleurs endroits à visiter</h1>
+
+<section class = "section">
     <% for (let i = 0; i < post.length; i++){ %>
     <% if (isAdmin){ %>
-            <button><a href="/add_post">Ajoutez un article</button>
     <div class= "block">
+        <button><a href="/add_post">Ajoutez un article</button>
         <button><a class="js-post-edit-form" href="/edit_post/<%= post[i].id %>"> Modifier l'article </button>
-         <button class="js-remove-post-button" data-id ="<%= post[i].id %>" /> Supprimer l'article </button>
+        <button class="js-remove-post-button" data-id ="<%= post[i].id %>"/> Supprimer l'article </button>
    <% } %>
   
-        <article class= "article"><h2> <%= post[i].titre %></h2>    
+        <article class= "articles"><h2> <%= post[i].titre %></h2>    
     <a href = "/article/<%= post[i].id %>"/>
         <img class = "article_img" src="<%=post[i].contenu.split('\n')[0] %>" alt = "Image de l'article"/>
     </a>
@@ -18,4 +19,5 @@
     <% } %>
     </div>
 </section>
+</body> 
 
