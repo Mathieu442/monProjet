@@ -1,9 +1,12 @@
 <h1>Editez un article</h1>
 
-<form action="/edit_post" enctype="multipart/form-data" class='js-post-edit-form' method="post">
+<form action="/edit_post" enctype="multipart/form-data"  method="post">
 	<input type="hidden" name="id" value="<%= article.id %>" />
 	<label>Titre de l'article</label>
 	<input type="text" name="titre" value="<%= article.titre %>">
+	<label>Image</label>
+	<input type="file" name='myfile'>
+	<input type="checkbox" checked="checked" name="garder_image"/>Garder l'image
 	<label>contenu de l'article</label>
 	<textarea class = "article_img" rows="20" cols="50" name="contenu"><%= article.contenu %></textarea>
 	

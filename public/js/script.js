@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function removePostButtonEventListener(event) {
     const buttonElement = event.target;
-    const id = buttonElement.getAttribute('data-id');
+    //const id = buttonElement.getAttribute('data-id');
     console.log(buttonElement);
     const options = {
         method: 'delete',
@@ -46,7 +46,8 @@ function removePostButtonEventListener(event) {
     };
     console.log(event);
 
-    const url = `/posts/${id}`;
+    const url = buttonElement.getAttribute("data-url");
+    console.log("delete url:"+url)
 
     fetch(url, options)
         .then(function(response) {
@@ -68,6 +69,7 @@ function removePostButtonEventListener(event) {
         .catch((err) => {
             console.log(err);
         });
+    
 }
 
 //------------------------------------------------------------------------------
@@ -124,11 +126,11 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Edit post button event listener
-    const editPostButton = document.querySelector('.js-post-edit-form .js-form-submit');
-    if (editPostButton !== null) {
-        editPostButton.addEventListener('click', editPostEventListener);
-    }
+    // // Edit post button event listener
+    // const editPostButton = document.querySelector('.js-post-edit-form .js-form-submit');
+    // if (editPostButton !== null) {
+    //     editPostButton.addEventListener('click', editPostEventListener);
+    // }
 });
 
 //------------------------------------------------------------------------------

@@ -23,7 +23,7 @@ router.get('/login', Login);
 router.get('/logout', Logout);
 
 //LOGIN PAGE POST
-router.post('/login', LoginSubmit);
+router.post('/loginSubmit', LoginSubmit);
 
 //ADD POST PAGE
 router.get('/add_post', AddPost);
@@ -47,13 +47,13 @@ router.get('/article/:id', ShowArticle);
 router.post('/add_comment/:id', AddComment);
 
 //DELETE POST
-router.delete('/posts/:id', DeletePost);
+router.delete('/delete_post/:id', DeletePost);
 
 //EDIT POST
 router.get('/edit_post/:id', EditPost);
 
 //EDIT POST PAGE POST
-router.put('/posts/:id', EditPostSubmit);
+router.post('/edit_post', EditPostSubmit);
 
 //SHOW GALLERY
 router.get('/gallery', Gallery)

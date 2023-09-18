@@ -23,7 +23,7 @@ export const ShowArticle = (req, res) => {
 
             var t = post[0].contenu.split('\n');
 
-            var img_url = t.shift()
+            var img_url = post[0].url_image;
 
             var content = t.join("<br>")
 

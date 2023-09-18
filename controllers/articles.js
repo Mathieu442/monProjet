@@ -11,9 +11,12 @@ export const ListArticles = (req, res) => {
 	// on fait passer les variable dans un tableau la methode query du module mysql 
 	// va analyser les data à l'interieur de la varaible pour s'assurer qu'il n'y a pas de requete malveillante
 	pool.query(sql, function(error, post, fields) {
-		console.log(error);
-		console.log(post)
-		console.log(post)
+
+		if (error){
+			console.log(error)
+		}
+		//console.log(error);
+		//console.log(post)
 		res.render('layout', { template: 'articles', post: post });
 
 	});
