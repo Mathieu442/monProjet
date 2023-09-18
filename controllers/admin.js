@@ -3,6 +3,7 @@ import fs from "fs";
 import formidable from "formidable";
 import { v4 as uuidv4 } from 'uuid';
 import path from "path";
+import { DownloadImageForm } from "./uploadFile.js";
 
 
 
@@ -47,20 +48,11 @@ export const AddPostSubmit = (req, res) => {
     // on utilise les name des input comme clefs de req.body
     console.log('le post', req.body)
 
-    const SIZE_MAX = 5 * 1024 * 1024
-
-    const __dirname = path.resolve();
-
-    // option 1
-    const authorizedExtention = ["jpg", "jpeg", "png", "JPG", "JPEG", "PNG"]
-
-    // option 2
-    const authorizedExtention2 = ["image/jpeg", "image/png", "image/jpg", ]
-
     const form = new formidable.IncomingForm();
 
     //Défini le chemin de destination pour le fichier téléchargé
-    form.on('fileBegin', (name, file) => { file.path = __dirname + '/public/upload/' + file.name; });
+    //form.on('fileBegin', (name, file) =>
+    //{ file.path = __dirname + '/public/upload/' + file.name; });
 
     form.parse(req, (err, fields, files) => {
         console.log(fields)
@@ -70,37 +62,10 @@ export const AddPostSubmit = (req, res) => {
             return res.status(500).send('Une erreur est survenue lors de l\'upload de l\'image.');
         }
 
+        var newFileUrl = DownloadImageForm(res, files.myfile);
 
-        if (files.myfile.size > SIZE_MAX) {
-            return res.status(500).send("Votre image est trop lourde")
-        }
-
-        // le chemin d'acces du fichier dans le tmp
-        const path = files.myfile.filepath
-        console.log(path)
-        //recupere l'extension du fichier
-        const extension = files.myfile.originalFilename.split(".").pop()
-        console.log(extension)
-        // le dosssier finale
-        const newPath = "upload/" + files.myfile.newFilename + "." + extension
-        console.log(newPath)
-        // option 1
-        if (!authorizedExtention.includes(extension)) {
-            return res.status(500).send("Le fichier n'a pas la bonne extention")
-        }
-
-        // option 2
-        if (!authorizedExtention2.includes(files.myfile.mimetype)) {
-            return res.status(500).send("Le fichier n'a pas la bonne extention")
-
-        }
-
-        fs.copyFile(path, newPath, (err) => {
-            if (err) {
-                console.log(err)
-            }
-        })
-        pool.query('INSERT INTO Articles (id, titre, contenu, dateCreation) VALUES (?, ?, ?, NOW())', [uuidv4(), fields.title, newPath], function(error, result, fields) {
+        pool.query('INSERT INTO Articles (id, titre, url_image, contenu, dateCreation) VALUES (?, ?, ?, ?, NOW())'
+        , [uuidv4(), fields.title, newFileUrl, fields.content], function(error, result, fields) {
             console.log(error)
             // une fois le post créé en BDD on redirige vers la page / (home)
             res.redirect('/');
@@ -170,20 +135,55 @@ export const EditPost = (req, res) => {
 
 export const EditPostSubmit = (req, res) => {
 
-    let id = req.params.id;
 
-    // requete de modification d'un post
-    let sql = 'UPDATE Articles SET titre = ?, contenu = ?, dateCreation = ? WHERE id = ?';
+    const form = new formidable.IncomingForm();
 
-    pool.query(sql, [req.body.titre, req.body.contenu, req.body.dateCreation, id], function(error, result, fields) {
-        if (error) {
-            console.log(error)
-            res.status(500).send({
-                error: 'Erreur lors du chargement de l\'article'
-            });
+
+    form.parse(req, (err, fields, files) => {
+        console.log(fields)
+
+        if (err) {
+            console.error(err);
+            return res.status(500).send('Une erreur est survenue lors de l\'upload de l\'image.');
         }
-        else {
-            res.status(200).send();
+        console.log("myfile:" + files.myfile)
+
+        var keepImage = fields.garder_image
+
+        var newFileUrl = ""
+
+        let sql = ""
+
+        let data = ""
+
+        if (keepImage){
+            newFileUrl = ""
+            sql = 'UPDATE Articles SET titre = ?, contenu = ? WHERE id = ?';
+            data = [fields.titre, fields.contenu, fields.id]
+
+        } else {
+              // requete de modification d'un post
+            sql = 'UPDATE Articles SET titre = ?, contenu = ?, url_image = ? WHERE id = ?';
+            newFileUrl = DownloadImageForm(res, files.myfile);
+            console.log("file url:" +newFileUrl)
+            data = [fields.titre, fields.contenu, newFileUrl, fields.id]
         }
-    });
+
+
+
+      
+
+        pool.query(sql, data, function(error, result, fields) {
+           
+            if (error) {
+                console.log(error)
+                res.status(500).send({
+                    error: 'Erreur lors du chargement de l\'article'
+                });
+            }
+            else {
+                res.redirect("/articles");
+            }
+        });
+    })
 }
