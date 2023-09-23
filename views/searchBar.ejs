@@ -1,0 +1,24 @@
+<body class="imgFond2">
+
+    <h1>Résultats de la recherche</h1>
+
+    <section>
+        <% if(post.length==0) { %>
+            <p>Aucun article ne correspond à vos critères</p>
+        <% } %>
+        <% if(post.length!=0) { %>
+            <% for (let i=0; i < post.length; i++){ %>
+                <article class="card">
+                    <a href="/article/<%= post[i].id %>">
+                        <img src="/upload/<%=post[i].url_image %>" alt="Image de l'article" />
+                    </a>
+                    <div class="card-body">
+                        <h2>
+                            <%= post[i].titre %>
+                        </h2>
+                    </div>
+                </article>
+            <% } %>
+        <% } %>
+    </section>
+</body>
