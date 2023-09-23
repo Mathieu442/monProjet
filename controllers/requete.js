@@ -134,3 +134,4 @@ app.get('/confirmation', (req, res) => {
     res.send('<h1>Inscription confirmée</h1>');
 
 });
+

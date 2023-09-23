@@ -1,20 +1,22 @@
-<!--<script src="register.js"></script>-->
+<h1>Formulaire d'inscription</h1>
 
- <h1>Formulaire d'inscription</h1>
  
- <% const errors = {} %>
-   <% if (errors) { %>
-        <div class="errors">
-         <% for (let key in errors) { %>
-            <p><%= errors[key] %></p>
-            <% } %>
-        </div>
- 
+
   <form class="form" id="inscription" action="/register" method="POST">
-   
+
+    <% if (errors) { %>
+      <div class="errors">
+        <% for (let key in errors) { %>
+          <p>
+            <%= errors[key] %>
+          </p>
+        <% } %>
+      </div>
+    <% } %>
+
     <label for="nom">Nom :</label>
     <input class="input" type="text" id="nom" name="nom" required>
-    
+
     <label for="prenom">Prenom :</label>
     <input class="input" type="text" id="prenom" name="prenom" required>
 
@@ -27,8 +29,6 @@
     <label for="motDePasseConfirm">Confirmation du mot de passe :</label>
     <input class="input" type="password" id="motDePasseConfirm" name="motDePasseConfirm" required>
 
-    
+
     <button id="button" type="submit">S'inscrire</button>
   </form>
- <% console.log(errors) %>
-            <% } %>

@@ -6,6 +6,7 @@ import router from "./router/route.js";
 import parseurl from "parseurl";
 import mysql from "mysql";
 
+
 //Initialisation d'express
 const app = express();
 const port = 3000;
@@ -61,6 +62,18 @@ app.use(function (req, res, next) {
         next();
     }
 });
+
+app.use(session({
+    secret: "sosecretagenereralatoirement",
+    saveUninitialized: false,
+    resave: false
+  }));
+  
+  // middleware to make 'user' available to all templates
+  app.use(function(req, res, next) {
+    res.locals.session = req.session;
+    next();
+  });
 
 //appel du routeur
 app.use('/', router);

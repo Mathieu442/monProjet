@@ -3,75 +3,90 @@
 
 <head>
   <meta charset="utf-8">
-  <title>Blog</title>
+  <title>Blog de voyage</title>
 
   <!-- Feuilles de style externes -->
+  <link rel="shortcut icon" href="/img/favicon.ico" />
   <link href="css/normalize.css" rel="stylesheet">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/css/style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="/css/style.css">
+
 </head>
 
 <body>
-  <div class = "container">
+  <div class="container">
+    
     <div class="searchBar">
-          <input type="search" id="maRecherche" name="searchbar" placeholder="Rechercher sur le site…" aria-label="Rechercher parmi le contenu du site">
-          <button><i class="fa-solid fa-magnifying-glass"></i></button>
-          <button id="dyslexic-mode-toggle">Dyslexic mode</button>
-
-        </div>
-  <!-- En-tête commune de l'application -->
-  <header class="header">
-    <div class="search">
-      <nav>
-        <div id="mySidenav" class="sidenav burger-icon">
-          <a id="closeBtn" href="#" class="close">×</a>
-          
-          <ul>
-            <li><a href="/">Accueil</a></li>
-            <li><a href="/articles">Bons plans et astuces</a></li>
-            <li><a href="/gallery">Galerie</a></li>
-            <li><a href="/login">Connexion</a></li>
-            <li><a href="/register">Inscription</a></li>
-            <li><a href="/logout">Se déconnecter</a></li>
-          </ul>
-        </div>
-
-        <a href="#" id="openBtn">
-          <span class="burger-icon">
-            <span></span>
-            <span></span>
-            <span></span>
-          </span>
-        </a>
+      <div class="user">
+        <% if (session.User){%>
+          <%= session.User.prenom %> 
+          <%= session.User.nom %>
+        <%} else {%>
+          <a href="/login">Connexion</a>
+        <%}%>
+      </div>
+      <form action="/searchBar" enctype="multipart/form-data" method="POST">
+        <input type="text" name="maRecherche" placeholder="Rechercher sur le site…"
+          aria-label="Rechercher parmi le contenu du site">
+        <button><i class="fa-solid fa-magnifying-glass"></i></button>
+      <!-- <button id="dyslexic-mode-toggle">Dyslexic mode</button> -->
+      </form>
 
 
-      </nav>
     </div>
-  </header>
-  <div class= "main">
+    <!-- En-tête commune de l'application -->
+    <header class="header">
+      <div class="search">
+        <nav>
+          <div id="mySidenav" class="sidenav burger-icon">
+            <a id="closeBtn" href="#" class="close">×</a>
 
-    <%- include(template) -%>
+            <ul>
+              <li><a href="/">Accueil</a></li>
+              <li><a href="/articles">Bons plans et astuces</a></li>
+              <li><a href="/gallery">Galerie</a></li>
+              <li><a href="/login">Connexion</a></li>
+              <li><a href="/register">Inscription</a></li>
+              <li><a href="/logout"><i class="fa-solid fa-right-from-bracket"></i></a></li>
+            </ul>
+          </div>
 
+          <a href="#" id="openBtn">
+            <span class="burger-icon">
+              <span></span>
+              <span></span>
+              <span></span>
+            </span>
+          </a>
+
+
+        </nav>
+      </div>
+    </header>
+    <div class="main">
+
+      <%- include(template) -%>
+
+    </div>
+
+    <!-- Pied de page commun de l'application -->
   </div>
-
-  <!-- Pied de page commun de l'application -->
-  
-  <footer>
-    <div class="pFoot pictos">
-        <a href="#http://mathieugilbert.sites.3wa.io:3000" class="site">floridadventure.fr</a>
+    <footer>
+      <div class="pFoot pictos">
+        <img class="logo" src="/img/logo.jpg" alt="logo" />    <a href="#http://mathieugilbert.sites.3wa.io:3000" class="site">floridadventure.fr</a>
         <a href="#" class="twitter"></a>
-				<a href="#" class="facebook"></a>
-				<a href="#" class="instagram"></a>
-				<a href="#" class="youtube"></a>
-    </div>
-  </footer>
-  </div>
-  <script src="/js/script.js"></script>
+        <a href="#" class="facebook"></a>
+        <a href="#" class="instagram"></a>
+        <a href="#" class="youtube"></a>
+      </div>
+    </footer>
   
+  <script src="/js/script.js"></script>
+
 </body>
 
 </html>

@@ -2,7 +2,7 @@ import express from 'express';
 
 const router = express.Router()
 
-import homeController from "../controllers/home.js";
+import { SearchBar, homeController } from "../controllers/home.js";
 import { AddComment } from "../controllers/article.js";
 import { ListArticles } from "../controllers/articles.js";
 import { AddPost, AddPostSubmit, Admin, DeletePost, EditPost, EditPostSubmit } from "../controllers/admin.js";
@@ -18,6 +18,9 @@ router.get('/admin', Admin);
 
 //LOGIN PAGE
 router.get('/login', Login);
+
+//SEARCH BAR
+router.all('/searchBar', SearchBar);
 
 //LOGOUT
 router.get('/logout', Logout);

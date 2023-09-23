@@ -1,3 +1,5 @@
+
+
 <section>
         <article class= "article"><h2> <%= article.titre %></h2>  
     <a href = "/article/:id<%= article.id %>">
@@ -7,13 +9,12 @@
         </article>
 </section>
 
-<section class="comment-article">
+<section class="comment_article">
 	
 	<ul>
 		<%for(let i = 0; i < comments.length; i++) {%>
 			<li>
-			 <%= comments.length %>
-				<h3><%=comments[i].idUtilisateur%></h3>
+				<h3><%=comments[i].prenom%> <%=comments[i].nom%></h3>
 				<p><%=comments[i].contenu%></p>
 				<p class="date-comment"><%=new Date(comments[i].datePublication).toLocaleDateString()%></p>
 			</li>
@@ -21,11 +22,13 @@
 	</ul>
 
 </section>
-<form action="/add_comment/<%=article.id%>" method="post" class = "form-article">
-	<p><label>Pseudo</label></p>
-	<p><input class= "pseudo-comm" type="text" name="pseudo"></p>
+<% if(session.User){%>
+	<form action="/add_comment/<%=article.id%>" method="post" class = "form-article">
 	
-	<p><label>Commentaire</label></p>
-	<p><textarea class="comm" name="content"></textarea></p>
-	<input class= "button" type="submit" name="Enregistrer">
-</form>
+		<p><label>Commentaire</label></p>
+		<p><textarea class="comm" name="content"></textarea></p>
+		<input class= "button" type="submit" name="Enregistrer">
+	
+	</form>
+<%}%>
+
