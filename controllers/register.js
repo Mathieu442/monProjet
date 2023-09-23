@@ -3,8 +3,8 @@ import { v4 as uuidv4 } from 'uuid';
 import bcrypt from 'bcrypt';
 
 export const Register = function(req, res) {
-  res.render('layout', { template: 'register' });
-};
+  res.render('layout', { template: 'register', errors:"" });
+}
 
 export const RegisterSubmit = function(req, res) {
   bcrypt.hash(req.body.motDePasse, 10, function(error, hash) {
@@ -39,15 +39,16 @@ export const RegisterSubmit = function(req, res) {
         id: uuidv4(),
         email: req.body.email,
         motDePasse: hash,
-        role: req.session.role,
+        role: "Utilisateur", /*req.session.role,*/
       };
 
-      pool.query('INSERT INTO Utilisateur SET ?', [newUser], function(error, result) {
+      pool.query('INSERT INTO Utilisateur (nom, prenom, id, email, motDePasse, role) VALUES (?, ?, ?, ?, ?, ?)'
+      , [newUser.nom, newUser.prenom, newUser.id, newUser.email, newUser.motDePasse, newUser.role], function(error, result) {
         if (error) {
-          res.status(500).send('Erreur de base de données');
+          res.status(500).send('Erreur de base de données'+'ERROR:' + error);
         }
         else {
-          req.session.role = 'utilisateur';
+          req.session.role = 'Utilisateur';
           res.render('layout', { template: 'login' });
         }
       });
